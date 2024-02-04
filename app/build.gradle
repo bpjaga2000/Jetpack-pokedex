@@ -1,0 +1,117 @@
+plugins {
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.kotlinAndroid)
+    id 'org.jetbrains.kotlin.kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    namespace 'in.bpj4.pokedex'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "in.bpj4.pokedex"
+        minSdk 27
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion "1.5.8"
+        kotlinCompilerVersion '1.4.30'
+    }
+    packaging {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+
+    implementation libs.core.ktx
+    implementation libs.appcompat
+    implementation libs.material
+    implementation platform(libs.compose.bom)
+    implementation libs.ui.graphics
+    implementation libs.ui.tooling.preview
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.test.ext.junit
+    androidTestImplementation libs.espresso.core
+
+    implementation libs.core.ktx
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.androidx.ui
+    implementation libs.androidx.material
+    implementation libs.androidx.ui.tooling
+    implementation libs.lifecycle.runtime.ktx
+    implementation libs.activity.compose
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit.v112
+    androidTestImplementation libs.androidx.espresso.core.v330
+    androidTestImplementation libs.androidx.ui.test.junit4
+
+    implementation libs.androidx.material.icons.core
+    implementation libs.androidx.material.icons.extended
+    implementation libs.androidx.lifecycle.viewmodel.compose
+    implementation libs.androidx.navigation.compose
+    implementation libs.androidx.constraintlayout.compose
+
+    // Retrofit
+    implementation libs.retrofit
+    implementation libs.converter.gson
+    implementation libs.okhttp
+    implementation libs.logging.interceptor
+    //interceptor
+    implementation libs.logging.interceptor.v4120
+
+    // Coroutines
+    implementation libs.kotlinx.coroutines.core
+    implementation libs.kotlinx.coroutines.android
+
+    // Coroutine Lifecycle Scopes
+    implementation libs.androidx.lifecycle.viewmodel.ktx
+    implementation libs.lifecycle.runtime.ktx
+
+    // Coil
+    implementation libs.coil
+
+    //Timber
+    implementation libs.timber
+
+    //hilt
+    implementation libs.hilt.android
+    annotationProcessor libs.hilt.compiler
+    implementation libs.hilt.android
+    kapt libs.google.hilt.compiler
+    implementation(libs.androidx.hilt.work)
+    implementation(libs.androidx.work.runtime.ktx)
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.hilt.navigation.fragment)
+
+    implementation(libs.androidx.palette.ktx)
+
+}
